@@ -17,8 +17,8 @@ local Thread = {}
 ]]--
 
 function Thread.new(func)
-    if type(func) ~= "function" and type(func) ~= "table" then
-        error("bad argument #1 (function or table expected, got " .. type(fn) .. ")", 2)
+    if type(func) ~= "function" then
+        error("bad argument #1 function expected, got " .. type(fn) .. ")", 2)
     end
     local id = _threadAdd(func)
     o = setmetatable({}, {__index = function ( table, index )
@@ -58,8 +58,7 @@ end
 
 -- Threading --
 function Threading.add(func)
-    local thread = Thread.new(func)
-    return thread
+    return Thread.new(func)
 end
 
 
