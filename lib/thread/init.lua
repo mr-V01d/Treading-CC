@@ -118,7 +118,7 @@ function app.start()
 				threadPool[n] = nil
 			end
 		end
-		eventData = table.pack(os.pullEvent())
+		eventData = table.pack(os.pullEventRaw())
 	end
 end
 
