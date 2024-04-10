@@ -1,15 +1,12 @@
 <h1>Lua Threading API (designed for CC:Tweaked/ComputerCraft)</h1>
-<h3>This small api designed for Minecraft mod called CC:Tweaked, and allows to run concurrent threads, using corouitines.</h3>
+<h3>This lightweight library designed for Minecraft mod called CC:Tweaked, and allows to run concurrent/pseudo asynchronous threads, using corouitines.</h3>
 <h2>How to install it?</h2>
-Just place `lib` folder anywhere, and include api into your project using `require("/path/to/your/lib/folder/lib/Thread")`.
-Any other folder exept `Thread` is not required, you can remove them.
-
-<h4>Demo:</h4>
-
-![Craftos](https://github.com/mr-V01d/Treading-CC/assets/47479465/13b8ab14-5074-4655-a2c9-6d76e47184f9)
+Just place `lib` folder anywhere, and include lib into your project using `require("/path/to/your/lib/folder/lib/thread")`.
+Any other folder exept `thread` is not required, you can remove them.
 
 <h2>Why?</h2>
 This lib allows you to run many function simultaneously, but unlike parallel, threads can generate new threads and continue running.
+Since computers in CC:T/ComputerCraft don't have cores, every thread you run, is running one-by-one, creating <i>pseudo asynchronous tasks</i>
 <h4>Demo:</h4>
 
 ![Demo](https://github.com/mr-V01d/Treading-CC/assets/47479465/bd1d5383-f692-4df8-b7f3-36f4954930eb)
@@ -19,31 +16,26 @@ This lib allows you to run many function simultaneously, but unlike parallel, th
 
 
 ```lua
+local thread = require "lib.thread"
+```
 
-thread = require "lib.mr_void.Thread"
+<h4>Warning!</h4>
+This library requires to be started anywhere in your code. It is recomended to start master thread in start of your app/os, run your code as a thread.
 
-
-function async_func()
-    for i = 1, 5 do
-        thread.add(async_for_i)
-        sleep(30)
-    end
-end
-
-function async_for_i()
-    for i = 1, 10 do
-        print("Some work, idk")
-        sleep(1)
-    end
-end
-
-thread.add(async_func)
+```lua
 thread.start()
 ```
 
+<h3>TODO:</h3>
+
+<ul>
+    <li>Join thread</li>
+    <li><b>Your idea</b></li>
+</ul>
+
 <h3>Conclusion</h3>
 
-Feel free to open an issue, for bug, idea or something. Ask questions on discord: mrvoid__ or at my [server](https://discord.gg/kKjeMJdkE8) <sub>if you care</sub>.
+Feel free to open an issue, for bug, idea or something. Ask questions on discord: mrvoid__ or matrix chat: @mr-void:hackliberty.org
 
 
-> This "project" under GPL-3.0 licence.
+> This library under GPL-3.0 licence.
